@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+ <title>Learnwise Academy</title>
+  <!-- Using Material Icons for clean, modern icons -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to right, white, lightblue);
+      color: black;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    .content-wrapper {
+      text-align: center;
+      background: #ffffffdd;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      max-width: 1000px;
+      width: 100%;
+    }
+
+    .title h1 {
+      font-size: 2.5rem;
+      color: black;
+      margin-bottom: 30px;
+    }
+
+    .cards {
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .card {
+      background-color: white;
+      border: 1px solid #ccc;
+      border-radius: 16px;
+      padding: 30px 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      flex: 1 1 250px;
+      text-align: center;
+      min-width: 250px;
+      max-width: 300px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .card:hover {
+      background-color: lightblue;
+      transform: translateY(-5px) scale(1.02);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+      border: 1px solid black;
+    }
+
+    .icon {
+      font-size: 60px;
+      margin-bottom: 15px;
+      color: black;
+      transition: all 0.3s ease;
+    }
+
+    .card:hover .icon {
+      color: black;
+      transform: scale(1.1);
+    }
+
+    .card-label {
+      font-size: 1rem;
+      font-weight: bold;
+      opacity: 0.8;
+      margin-top: 10px;
+    }
+
+    @media (max-width: 768px) {
+      .cards {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .card {
+        width: 100%;
+        max-width: 400px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .title h1 {
+        font-size: 2rem;
+      }
+
+      .card {
+        padding: 25px;
+      }
+      
+      .icon {
+        font-size: 50px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="content-wrapper">
+    <div class="title">
+      <h1>Learnwise Acadamy</h1>
+
+    </div>
+
+    <div class="cards">
+      <div class="card" onclick="student()">
+        <span class="icon material-icons">school</span>
+        <span class="card-label">Student</span>
+      </div>
+      <div class="card" onclick="instructor()">
+        <span class="icon material-icons">person</span>
+        <span class="card-label">Instructor</span>
+      </div>
+      <div class="card" onclick="admin()">
+        <span class="icon material-icons">admin_panel_settings</span>
+        <span class="card-label">Admin</span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function student() {
+      window.location.href = "StudentLog2.html";
+    }
+
+    function instructor() {
+      window.location.href = "InstructorLog2.html";
+    }
+
+    function admin() {
+      window.location.href = "AdminLog2.html";
+    }
+  </script>
+
+</body>
+</html>

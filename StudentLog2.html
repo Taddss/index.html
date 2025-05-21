@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BPC Login</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to right, white, lightblue);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .container {
+      display: flex;
+      max-width: 1000px;
+      width: 100%;
+      background-color: #ffffffcc;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      flex-wrap: wrap;
+    }
+
+    .left, .right {
+      padding: 40px;
+      flex: 1 1 400px;
+    }
+
+    .title h1 {
+      font-size: 2.8rem;
+      color: black;
+    }
+
+    .title p {
+      font-size: 1rem;
+      color: black;
+      margin-top: 10px;
+    }
+
+    h2 {
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    input[type="text"],
+    input[type="password"],
+    input[type="email"] {
+      width: 100%;
+      padding: 12px 15px;
+      margin-bottom: 15px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: skyblue;
+      color: black;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      background-color: aliceblue;
+      color: black;
+      transform: translateY(-2px);
+      border: 1px solid black;
+    }
+
+    .toggle, .forgot {
+      text-align: center;
+      margin-top: 10px;
+      font-size: 0.9rem;
+      color: #0066cc;
+      cursor: pointer;
+    }
+
+    .toggle:hover, .forgot:hover {
+      text-decoration: underline;
+    }
+
+    .checkbox-container {
+      margin: 10px 0;
+      font-size: 0.9rem;
+    }
+
+    #signupForm {
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+
+      .left, .right {
+        padding: 30px 20px;
+      }
+
+      .title h1 {
+        font-size: 2rem;
+        text-align: center;
+      }
+
+      .title p {
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="left">
+      <div class="title">
+        <h1>Learnwise Academy</h1>
+        <p>Online Learning System</p>
+      </div>
+    </div>
+    <div class="right">
+      <div id="loginForm">
+        <h2>Login as Student</h2>
+        <input type="text" id="usernamelog" placeholder="Username">
+        <input type="password" id="passwordlog" placeholder="Password">
+        <div class="checkbox-container">
+          <input type="checkbox" id="showLoginPass" onclick="togglePassword('passwordlog')"> Show Password
+        </div>
+        <div class="forgot" onclick="alert('Password recovery not implemented.')">Forgot Password?</div>
+        <button onclick="login()">Login</button>
+        <div class="toggle" onclick="toggleForm()">Don't have an account? Sign Up</div>
+      </div>
+
+      <div id="signupForm">
+        <h2>Sign Up as Student</h2>
+        <input type="text" id="usernamesign" placeholder="Username">
+        <input type="email" id="emailsign" placeholder="Email">
+        <input type="password" id="passwordsign" placeholder="Password">
+        <div class="checkbox-container">
+          <input type="checkbox" id="showSignupPass" onclick="togglePassword('passwordsign')"> Show Password
+        </div>
+        <button onclick="signup()">Sign Up</button>
+        <div class="toggle" onclick="toggleForm()">Already have an account? Login</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let registeredUsername = null;
+    let registeredPassword = null;
+
+    function toggleForm() {
+      const loginForm = document.getElementById('loginForm');
+      const signupForm = document.getElementById('signupForm');
+      loginForm.style.display = loginForm.style.display === 'none' ? 'block' : 'none';
+      signupForm.style.display = signupForm.style.display === 'block' ? 'none' : 'block';
+    }
+
+    function togglePassword(id) {
+      const input = document.getElementById(id);
+      input.type = input.type === 'password' ? 'text' : 'password';
+    }
+
+    function login() {
+      const username = document.getElementById('usernamelog').value;
+      const password = document.getElementById('passwordlog').value;
+      if (!username || !password) {
+        alert("Please fill in all fields.");
+      } else if (username === registeredUsername && password === registeredPassword) {
+        alert("Login successful! Welcome.");
+        window.location.href = "StudentMainPage.html";
+      } else {
+        alert("Invalid username or password.");
+      }
+    }
+
+    function signup() {
+      const username = document.getElementById('usernamesign').value;
+      const email = document.getElementById('emailsign').value;
+      const password = document.getElementById('passwordsign').value;
+      if (!username || !email || !password) {
+        alert("Please fill in all fields.");
+      } else {
+        registeredUsername = username;
+        registeredPassword = password;
+        alert("Account created successfully!");
+        toggleForm();
+      }
+    }
+  </script>
+</body>
+</html>
