@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bulacan Polytechnic - Admin Dashboard</title>
-    <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -352,15 +350,12 @@
                 <i class="fas fa-users"></i>
                 <span>Users</span>
             </button>
-          <!--  <button class="nav-button" onclick="showSection('manage-reports')">
-                <i class="fas fa-file-alt"></i>
-                <span>Reports</span>-->
+
             </button>
         </div>
     </header>
 
     <main>
-        <!-- Statistics Dashboard -->
         <section id="statistics" class="content-section active">
             <div class="section-header">
                 <h2>Platform Statistics</h2>
@@ -386,7 +381,6 @@
             </div>
         </section>
 
-        <!-- Manage Courses -->
         <section id="manage-courses" class="content-section">
             <div class="section-header">
                 <h2>Manage Courses</h2>
@@ -408,7 +402,6 @@
             </div>
         </section>
 
-        <!-- Manage Users -->
         <section id="manage-users" class="content-section">
             <div class="section-header">
                 <h2>Manage Users</h2>
@@ -439,7 +432,6 @@
             </div>
         </section>
 
-        <!-- Manage Reports 
         <section id="manage-reports" class="content-section">
             <div class="section-header">
                 <h2>Manage Reports</h2>
@@ -464,7 +456,7 @@
                 <div id="reportsList"></div>
             </div>
         </section>
-    </main> -->
+    </main>
 
     <script>
         const courses = [];
@@ -475,7 +467,6 @@
             document.querySelectorAll('.content-section').forEach(sec => sec.classList.remove('active'));
             document.getElementById(id).classList.add('active');
             
-            // Update active nav button
             document.querySelectorAll('.nav-button').forEach(btn => btn.classList.remove('active'));
             document.querySelector(`.nav-button[onclick="showSection('${id}')"]`).classList.add('active');
             
@@ -669,7 +660,6 @@
             setTimeout(() => el.textContent = '', 3000);
         }
 
-        // Initialize
         renderCourses();
         renderUsers();
         renderReports();
