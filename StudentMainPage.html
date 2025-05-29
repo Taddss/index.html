@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bulacan Polytechnic - Course Platform</title>
-    <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -483,7 +481,6 @@
 <body>
     <header>
         <div class="logo">
-            <<!-- <img src="https://via.placeholder.com/50x50?text=BPC" alt="Bulacan Polytechnic Logo"> -->
             <h1>Learnwise Acadamy</h1>
         </div>
         
@@ -525,7 +522,6 @@
     </header>
 
     <main>
-        <!-- Dashboard Section -->
         <section id="dashboard" class="content-section active">
             <div class="section-header">
                 <h2>Welcome!</h2>
@@ -604,7 +600,6 @@
             </div>
         </section>
 
-        <!-- Courses Section -->
         <section id="courses" class="content-section">
             <div class="section-header">
                 <h2>Available Courses</h2>
@@ -652,7 +647,6 @@
                     </div>
                 </div>
                 
-                <!-- More course cards would go here -->
             </div>
             
             <h4 style="margin: 2rem 0 1rem 0;">2-Year Programs</h4>
@@ -697,7 +691,6 @@
             </div>
         </section>
 
-        <!-- Progress Section -->
         <section id="progress" class="content-section">
             <div class="section-header">
                 <h2>Your Learning Progress</h2>
@@ -748,7 +741,6 @@
             </div>
         </section>
 
-        <!-- Certificates Section -->
         <section id="certificates" class="content-section">
             <div class="section-header">
                 <h2>Your Certificates</h2>
@@ -795,7 +787,6 @@
             </div>
         </section>
 
-        <!-- Profile Section -->
         <section id="profile" class="content-section">
             <div class="section-header">
                 <h2>Your Profile</h2>
@@ -844,23 +835,18 @@
     </main>
 
     <script>
-        // Show the selected section and update active nav button
         function showSection(sectionId) {
-            // Hide all sections
             const sections = document.querySelectorAll('.content-section');
             sections.forEach(section => section.classList.remove('active'));
             
-            // Show selected section
             const activeSection = document.getElementById(sectionId);
             if (activeSection) {
                 activeSection.classList.add('active');
             }
             
-            // Update active nav button
             const navButtons = document.querySelectorAll('.nav-button');
             navButtons.forEach(button => button.classList.remove('active'));
             
-            // Find the button that corresponds to this section
             let activeButton = null;
             if (sectionId === 'dashboard') activeButton = navButtons[0];
             else if (sectionId === 'courses') activeButton = navButtons[1];
@@ -870,11 +856,9 @@
             if (activeButton) activeButton.classList.add('active');
         }
 
-        // Enroll in a course
         function enrollCourse(courseName) {
             const confirmation = confirm(`Do you want to enroll in ${courseName}?`);
             if (confirmation) { window.location.href = "enrollment.html";
-                // Show a nice notification
                 const notification = document.createElement('div');
                 notification.style.position = 'fixed';
                 notification.style.bottom = '20px';
@@ -894,7 +878,6 @@
                 `;
                 document.body.appendChild(notification);
                 
-                // Remove notification after 3 seconds
                 setTimeout(() => {
                     notification.style.opacity = '0';
                     notification.style.transition = 'opacity 0.5s ease';
@@ -903,7 +886,6 @@
             }
         }
 
-        // Sample activities data
         const activities = [
             { title: "Introduction to HTML", completed: true, due: null },
             { title: "CSS Basics Quiz", completed: true, due: null },
@@ -912,7 +894,6 @@
             { title: "Final Web Project", completed: false, due: "2024-07-10" }
         ];
 
-        // Load activities into the progress section
         function loadActivities() {
             const list = document.getElementById('activityList');
             list.innerHTML = '';
@@ -922,7 +903,6 @@
                 li.className = 'activity-item';
                 if (activity.completed) li.classList.add('done');
                 
-                // Format due date if it exists
                 let dueText = '';
                 if (activity.due && !activity.completed) {
                     const dueDate = new Date(activity.due);
@@ -942,11 +922,9 @@
             });
         }
 
-        // Initialize the page
         document.addEventListener('DOMContentLoaded', function() {
             loadActivities();
             
-            // Simulate loading progress bars
             setTimeout(() => {
                 document.querySelectorAll('.progress-fill').forEach(fill => {
                     const width = fill.style.width;
