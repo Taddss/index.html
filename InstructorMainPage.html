@@ -8,14 +8,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: lightblue;
+            --primary-color: #7BA2BD;
             --primary-light: white;
             --primary-dark: black;
             --secondary-color: #ffeb3b;
             --dark-text: black;
             --light-text: black;
             --background: #f9f9f9;
-            --card-bg: #ffffff;
+            --card-bg: lightgrey;
             --border-radius: 12px;
             --box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
             --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
@@ -50,6 +50,7 @@
             display: flex;
             align-items: center;
             gap: 1rem;
+            font-family:  Cormorant Upright;
         }
 
         .logo h1 {
@@ -145,15 +146,21 @@
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
             gap: 2rem;
             margin-top: 1.5rem;
+            margin-bottom: 1.5rem;
         }
 
         .card {
-            background-color: var(--card-bg);
+            background-color: white;
             border-radius: var(--border-radius);
             box-shadow: var(--box-shadow);
             overflow: hidden;
             transition: var(--transition);
             padding: 1.5rem;
+            color: #616161;
+            border: 1px solid black; 
+             margin-top: 1.5rem;
+            margin-bottom: 1.5rem;
+ 
         }
 
         .card:hover {
@@ -222,7 +229,7 @@
 
         .progress-fill {
             height: 100%;
-            background-color: var(--primary-color);
+            background-color: #2563EB;
             width: 0%;
             transition: width 0.5s ease;
         }
@@ -350,19 +357,23 @@
         .stat-card {
             text-align: center;
             padding: 1.5rem;
+            border: 1px solid black;
+ 
+
         }
 
         .stat-card .number {
             font-size: 2.5rem;
             font-weight: 700;
-            color: var(--primary-color);
+            color: #2563EB;
             margin: 0.5rem 0;
         }
 
         .stat-card .label {
-            color: #757575;
-            font-size: 0.9rem;
+            color: #616161;
+            font-size: 1rem;
         }
+       
 
         .course-item {
             display: flex;
@@ -445,7 +456,6 @@
     </header>
 
     <main>
-        <!-- Statistics Page -->
         <section id="statistics" class="content-section active">
             <div class="section-header">
                 <h2>Student Enrollment Statistics</h2>
@@ -479,7 +489,6 @@
             </div>
         </section>
 
-        <!-- View Courses -->
         <section id="view-courses" class="content-section">
             <div class="section-header">
                 <h2>Available Courses</h2>
@@ -492,7 +501,6 @@
             <div class="card-container" id="allCoursesList"></div>
         </section>
 
-        <!-- My Courses -->
         <section id="my-courses" class="content-section">
             <div class="section-header">
                 <h2>Manage My Courses</h2>
@@ -583,7 +591,6 @@
     </main>
 
     <script>
-        // Sample data
         const allCourses = [
             { code: "BSIS 101", name: "Introduction to Information Systems", description: "Fundamentals of IS", credits: 3 },
             { code: "BSOM 201", name: "Operations Management", description: "Principles of business operations", credits: 3 },
@@ -603,7 +610,6 @@
         let myCourses = [];
         let materials = [];
 
-        // DOM Ready
         document.addEventListener('DOMContentLoaded', function() {
             renderStatistics();
             renderAllCourses();
@@ -611,7 +617,6 @@
         });
 
         function showSection(id) {
-            // Update active button
             document.querySelectorAll('.nav-button').forEach(btn => {
                 btn.classList.remove('active');
                 if (btn.getAttribute('onclick').includes(id)) {
@@ -619,19 +624,16 @@
                 }
             });
             
-            // Show section
             document.querySelectorAll('.content-section').forEach(section => {
                 section.classList.remove('active');
             });
             document.getElementById(id).classList.add('active');
             
-            // Refresh content if needed
             if (id === 'statistics') renderStatistics();
             if (id === 'view-courses') renderAllCourses();
         }
 
         function renderStatistics() {
-            // Calculate total students
             let total = 0;
             let popularCourse = { code: '', count: 0 };
             
@@ -641,12 +643,10 @@
             for (const [code, data] of Object.entries(enrolledStudents)) {
                 total += data.count;
                 
-                // Find most popular course
                 if (data.count > popularCourse.count) {
                     popularCourse = { code, count: data.count };
                 }
                 
-                // Create progress item for each course
                 const progressItem = document.createElement('div');
                 progressItem.className = 'progress-container';
                 progressItem.innerHTML = `
@@ -662,11 +662,9 @@
                 container.appendChild(progressItem);
             }
             
-            // Update summary cards
             document.getElementById('totalStudents').textContent = total;
             document.getElementById('popularCourse').textContent = popularCourse.code;
             
-            // Animate progress bars
             setTimeout(() => {
                 document.querySelectorAll('.progress-fill').forEach(fill => {
                     const width = fill.style.width;
@@ -712,7 +710,6 @@
             
             if (myCourses.length === 0) {
                 container.innerHTML = '<div class="no-items">You haven\'t added any courses yet.</div>';
-                // Update materials dropdown
                 updateMaterialsDropdown();
                 return;
             }
@@ -734,7 +731,6 @@
                 container.appendChild(courseItem);
             });
             
-            // Update materials dropdown
             updateMaterialsDropdown();
         }
 
@@ -863,7 +859,6 @@
         }
 
         function setupEventListeners() {
-            // Add course form
             document.getElementById('courseForm').addEventListener('submit', function(e) {
                 e.preventDefault();
                 const code = document.getElementById('courseName').value.trim();
@@ -874,13 +869,11 @@
                     return;
                 }
                 
-                // Check if already exists
                 if (myCourses.some(c => c.code === code)) {
                     showNotification("This course is already in your list", "error");
                     return;
                 }
                 
-                // Find course details
                 const existingCourse = allCourses.find(c => c.code === code);
                 
                 myCourses.push({
@@ -895,7 +888,6 @@
                 showNotification("Course added successfully");
             });
             
-            // Add material form
             document.getElementById('materialForm').addEventListener('submit', function(e) {
                 e.preventDefault();
                 const course = document.getElementById('materialCourse').value;
@@ -919,7 +911,6 @@
                 showNotification("Material added successfully");
             });
             
-            // Course search input
             document.getElementById('courseSearch').addEventListener('keyup', function(e) {
                 if (e.key === 'Enter') {
                     filterCourses();
@@ -928,7 +919,6 @@
         }
 
         function showNotification(message, type = "success") {
-            // Create notification element
             const notification = document.createElement('div');
             notification.style.position = 'fixed';
             notification.style.bottom = '20px';
@@ -948,7 +938,6 @@
             `;
             document.body.appendChild(notification);
             
-            // Remove notification after 3 seconds
             setTimeout(() => {
                 notification.style.opacity = '0';
                 notification.style.transition = 'opacity 0.5s ease';
