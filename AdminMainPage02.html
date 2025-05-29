@@ -8,7 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary-color: lightblue;
+            --primary-color:  #7BA2BD;
             --primary-light: white;
             --primary-dark: black;
             --secondary-color: #ffeb3b;
@@ -56,6 +56,7 @@
             color: white;
             font-size: 1.5rem;
             font-weight: 600;
+            font-family: Cormorant Upright;
         }
 
         .nav-buttons {
@@ -200,6 +201,7 @@
             text-align: center;
             box-shadow: var(--box-shadow);
             transition: var(--transition);
+             border: 1px solid #37586C;
         }
 
         .stat-card:hover {
@@ -209,7 +211,7 @@
         .stat-value {
             font-size: 2.5rem;
             font-weight: bold;
-            color: var(--primary-color);
+            color: #2563EB;
             margin: 0.5rem 0;
         }
 
@@ -232,6 +234,7 @@
             box-shadow: var(--box-shadow);
             max-width: 500px;
             margin: 2rem 0;
+             border: 1px solid #37586C;
         }
 
         form label {
@@ -350,7 +353,9 @@
                 <i class="fas fa-users"></i>
                 <span>Users</span>
             </button>
-
+          <!--  <button class="nav-button" onclick="showSection('manage-reports')">
+                <i class="fas fa-file-alt"></i>
+                <span>Reports</span>-->
             </button>
         </div>
     </header>
@@ -432,6 +437,7 @@
             </div>
         </section>
 
+        <!-- Manage Reports 
         <section id="manage-reports" class="content-section">
             <div class="section-header">
                 <h2>Manage Reports</h2>
@@ -456,7 +462,7 @@
                 <div id="reportsList"></div>
             </div>
         </section>
-    </main>
+    </main> -->
 
     <script>
         const courses = [];
@@ -467,6 +473,7 @@
             document.querySelectorAll('.content-section').forEach(sec => sec.classList.remove('active'));
             document.getElementById(id).classList.add('active');
             
+            // Update active nav button
             document.querySelectorAll('.nav-button').forEach(btn => btn.classList.remove('active'));
             document.querySelector(`.nav-button[onclick="showSection('${id}')"]`).classList.add('active');
             
