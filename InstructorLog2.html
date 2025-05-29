@@ -26,11 +26,14 @@
       display: flex;
       max-width: 1000px;
       width: 100%;
-      background-color: #ffffffcc;
+      background: rgba(255, 255, 255, 0.1); 
       border-radius: 15px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
       overflow: hidden;
       flex-wrap: wrap;
+     -webkit-backdrop-filter: blur(10px);
+     border-color: black;
     }
 
     .left, .right {
@@ -41,12 +44,14 @@
     .title h1 {
       font-size: 2.8rem;
       color: black;
+      font-family: Cormorant Upright;
     }
 
     .title p {
       font-size: 1rem;
       color: black;
       margin-top: 10px;
+       font-family: Cormorant Upright;
     }
 
     h2 {
@@ -68,7 +73,7 @@
     button {
       width: 100%;
       padding: 12px;
-      background-color: skyblue;
+      background-color: #4A90E2;
       color: black;
       border: none;
       border-radius: 8px;
@@ -79,7 +84,7 @@
     }
 
     button:hover {
-      background-color: aliceblue;
+      background-color: #6BB2FF;
       color: black;
       transform: translateY(-2px);
       border: 1px solid black;
@@ -122,6 +127,9 @@
 
       .title p {
         text-align: center;
+      }
+      .loginForm h2 {
+        color: white;
       }
     }
   </style>
